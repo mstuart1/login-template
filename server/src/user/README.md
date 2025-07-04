@@ -1,0 +1,1 @@
+call comes into the auth.router.ts which validates against the auth.schema, then gets its function from the controller, which handles the req,res portion and passes the rest to the service.

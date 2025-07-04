@@ -1,0 +1,1 @@
+call comes into the user.router.ts which validates against the user.schema, then gets its function from the controller, which handles the req,res portion and passes the rest to the service.

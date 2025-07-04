@@ -1,0 +1,3 @@
+express-server/src/logs/error.log
+express-server/src/logs/request.log
+express-server/src/logs/server.log

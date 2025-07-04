@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = "file:./dev.db"
+  // provider = "postgresql"
+  // url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String        @id @default(uuid())
+  firstName      String? // can add ? and allow user to register with just an email
+  lastName       String?
+  email          String        @unique
+  role           String          @default("USER")
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  deletedAt      DateTime?
+  //Relation fields
+  tokens         Token[]
+
+  // Indexes
+  // @@unique([age, name]) // can't have two users with the same name and same age
+  @@index([email]) //if we want to query by email it will help with performance
+}
+
+model Token {
+  id         String    @id @default(uuid())
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  tokenType  String
+  token      String    @unique
+  valid      Boolean   @default(true)
+  expiration DateTime
+  //Relation fields
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+}
+
+
+
+model Metric {
+  id        String   @id @default(cuid())
+  name      String
+  value     Float
+  delta     Float?
+  metricId  String   // same as `id` from web-vitals
+  userId    String?
+  timestamp DateTime @default(now())
+}
+
+
