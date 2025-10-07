@@ -7,7 +7,7 @@ import PersistLogin from './components/PersistLogin'
 import Login from './pages/Login'
 import Unauthorized from './pages/Unauthorized'
 import PublicHome from './pages/PublicHome'
-import MetricsPage from './pages/MetricsPage'
+// import MetricsPage from './pages/MetricsPage'
 import PrivateHome from './pages/PrivateHome'
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/unauthorized' element={<Unauthorized />} />
         <Route index element={<PublicHome />} />
-        <Route path='/metrics' element={<MetricsPage />} />
+        {/* <Route path='/metrics' element={<MetricsPage />} /> */}
         
         {/* everything within RequireAuth requires a login */}
         <Route element={<PersistLogin />}>
